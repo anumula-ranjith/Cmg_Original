@@ -1,0 +1,12 @@
+{
+  "name": "@cmg/core-array",
+  "version": "0.1.0",
+  "description": "CMG Core Array Definitions",
+  "author": "Capital Markets Gateway, Inc.",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "peerDependencies": {
+    "@cmg/core-types": "^0.1.0",
+    "@cmg/core-assert": "^0.1.0"
+  }
+}

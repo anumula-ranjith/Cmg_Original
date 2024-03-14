@@ -1,0 +1,13 @@
+node_modules
+dist
+build
+.cache
+packages/**/public
+**/__generated__/
+packages/xc-client-web/src/common/graphql/*.codegen.ts
+packages/**/.mesh
+tmp
+coverage
+storybook-static
+
+/.nx/cache

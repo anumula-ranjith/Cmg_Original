@@ -1,0 +1,65 @@
+{
+  "name": "graphql-toolkit-client",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/graphql/toolkit/client/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/graphql/toolkit/client",
+        "main": "libs/graphql/toolkit/client/src/index.ts",
+        "tsConfig": "libs/graphql/toolkit/client/tsconfig.lib.json",
+        "assets": ["libs/graphql/toolkit/client/*.md"],
+        "swcrc": "workspace-configs/lib/.swcrc"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/graphql/toolkit/client/**/*.ts"]
+      },
+      "configurations": {
+        "dev": {
+          "format": "visualstudio"
+        },
+        "ci": {
+          "maxWarnings": 0
+        },
+        "fix": {
+          "fix": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/graphql/toolkit/client/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "reporters": ["jest-silent-reporter", "jest-slow-test-reporter"]
+        },
+        "dev": {
+          "watch": true,
+          "onlyChanged": true
+        }
+      }
+    },
+    "ts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p tsconfig.json --noEmit",
+        "cwd": "libs/graphql/toolkit/client"
+      },
+      "configurations": {
+        "check": {}
+      }
+    }
+  },
+  "tags": []
+}

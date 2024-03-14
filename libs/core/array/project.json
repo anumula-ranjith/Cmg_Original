@@ -1,0 +1,60 @@
+{
+  "name": "core-array",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core/array/src/",
+  "projectType": "library",
+  "tags": ["scope:core"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "swcrc": "workspace-configs/lib/.swcrc",
+        "outputPath": "dist/libs/core/array",
+        "main": "libs/core/array/src/index.ts",
+        "tsConfig": "libs/core/array/tsconfig.lib.json",
+        "assets": ["libs/core/array/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/core/array/**/*.ts"]
+      },
+      "configurations": {
+        "dev": {
+          "format": "visualstudio"
+        },
+        "ci": {
+          "maxWarnings": 0
+        },
+        "fix": {
+          "fix": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/core/array"],
+      "options": {
+        "jestConfig": "libs/core/array/jest.config.ts"
+      },
+      "configurations": {
+        "ci": {
+          "reporters": ["jest-silent-reporter", "jest-slow-test-reporter"]
+        }
+      }
+    },
+    "ts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p tsconfig.json --noEmit",
+        "cwd": "libs/core/array"
+      },
+      "configurations": {
+        "check": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@cmg/graphql-toolkit-introspection",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "dependencies": {
+    "@cmg/core-types": "*",
+    "@cmg/core-array": "*",
+    "@cmg/core-assert": "*",
+    "camelcase": "^6.3.0",
+    "pluralize": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@cmg/graphql-toolkit-core": "^0.0.1",
+    "@cmg/graphql-toolkit-client": "^0.0.1",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "@types/pluralize": "^0.0.29"
+  }
+}

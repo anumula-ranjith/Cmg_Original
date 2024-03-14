@@ -1,0 +1,65 @@
+{
+  "name": "core-assert",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core/assert/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/core/assert",
+        "main": "libs/core/assert/src/index.ts",
+        "tsConfig": "libs/core/assert/tsconfig.lib.json",
+        "assets": ["libs/core/assert/*.md"],
+        "swcrc": "workspace-configs/lib/.swcrc"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/core/assert/**/*.ts"]
+      },
+      "configurations": {
+        "dev": {
+          "format": "visualstudio"
+        },
+        "ci": {
+          "maxWarnings": 0
+        },
+        "fix": {
+          "fix": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/core/assert/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "reporters": ["jest-silent-reporter", "jest-slow-test-reporter"]
+        },
+        "dev": {
+          "watch": true,
+          "onlyChanged": true
+        }
+      }
+    },
+    "ts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p tsconfig.json --noEmit",
+        "cwd": "libs/core/assert"
+      },
+      "configurations": {
+        "check": {}
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.es2020.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true
+  },
+  "exclude": ["node_modules", "**/*/node_modules", "**/*/lib", "**/*/dist", "**/*/build"]
+}

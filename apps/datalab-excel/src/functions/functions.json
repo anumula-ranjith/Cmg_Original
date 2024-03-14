@@ -1,0 +1,172 @@
+{
+  "functions": [
+    {
+      "description": "Retrieves a specified field value by ID from the GraphQL server.",
+      "id": "GET_FIELD_BY_NAME",
+      "name": "GET_FIELD_BY_NAME",
+      "parameters": [
+        {
+          "description": "ID of the GraphQL type.",
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "description": "GraphQL type name.",
+          "name": "graphQlType",
+          "type": "string"
+        },
+        {
+          "description": "Name of the field to get the value of.",
+          "name": "fieldName",
+          "type": "string"
+        },
+        {
+          "description": "Name of the field to get the value of.",
+          "name": "conditions",
+          "optional": true,
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Returns the value at the provided position in a json array.",
+      "id": "GET_ARRAY_VALUE",
+      "name": "GET_ARRAY_VALUE",
+      "parameters": [
+        {
+          "description": "Json Array value.",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "description": "Position of the value to return.",
+          "name": "position",
+          "type": "number"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Returns the length of a provided json array.",
+      "id": "GET_ARRAY_LENGTH",
+      "name": "GET_ARRAY_LENGTH",
+      "parameters": [
+        {
+          "description": "Json array value.",
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "number"
+      }
+    },
+    {
+      "description": "Returns the length of a provided json array.",
+      "id": "FORMAT_TEMPLATE",
+      "name": "FORMAT_TEMPLATE",
+      "parameters": [
+        {
+          "description": "Javascript template string.",
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "description": "Array of values to use in the template.",
+          "dimensionality": "matrix",
+          "name": "values",
+          "optional": true,
+          "type": "string"
+        }
+      ],
+      "result": {}
+    },
+    {
+      "description": "Returns a CSV style list given a json string array.",
+      "id": "GET_LIST_FROM_ARRAY_WITH_DELIMITER",
+      "name": "GET_LIST_FROM_ARRAY_WITH_DELIMITER",
+      "parameters": [
+        {
+          "description": "Json array value.",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "description": "Delimiter to use on the output e.g. ',',  '|' etc.",
+          "name": "delimiter",
+          "type": "string"
+        },
+        {
+          "description": "Should quote the output?",
+          "name": "quote",
+          "optional": true,
+          "type": "boolean"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Gets a specified field value by ID and maps it with the given Excel table. This handles the use case where the response from the graphql server is an array.",
+      "id": "GET_MAPPED_VALUE_BY_ID",
+      "name": "GET_MAPPED_VALUE_BY_ID",
+      "parameters": [
+        {
+          "description": "ID of the GraphQL type.",
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "description": "Name of the field to get the value of.",
+          "name": "fieldName",
+          "type": "string"
+        },
+        {
+          "description": "GraphQL type name.",
+          "name": "graphQlType",
+          "type": "string"
+        },
+        {
+          "description": "Excel range to map the value from.",
+          "name": "tableName",
+          "type": "string"
+        },
+        {
+          "description": "Query conditions. Not implemented yet.",
+          "name": "conditions",
+          "optional": true,
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    },
+    {
+      "description": "Returns a mapped json array against the provided Excel table. If a value is not found in the table, the original value is returned.",
+      "id": "GET_MAPPED_VALUE_FROM_ARRAY",
+      "name": "GET_MAPPED_VALUE_FROM_ARRAY",
+      "parameters": [
+        {
+          "description": "Json Array value to use for mapping.",
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "description": "Excel range to map the value from.",
+          "name": "tableName",
+          "type": "string"
+        }
+      ],
+      "result": {
+        "type": "string"
+      }
+    }
+  ]
+}

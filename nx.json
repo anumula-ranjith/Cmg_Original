@@ -1,0 +1,171 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "extends": "nx/presets/npm.json",
+  "namedInputs": {
+    "noSpecs": [
+      "!{projectRoot}/**/*.spec.ts",
+      "!{projectRoot}/**/*.spec.tsx",
+      "!{projectRoot}/**/*.test.ts",
+      "!{projectRoot}/**/*.spec.tsx"
+    ],
+    "noMarkdown": ["!{projectRoot}/**/*.md"],
+    "noReadme": ["!{projectRoot}/**/README.md"],
+    "noSonar": ["!{projectRoot}/**/.sonar-scanner.properties"],
+    "esLintConfig": [
+      "{workspaceRoot}/.eslintrc.js",
+      "{workspaceRoot}/eslintignore",
+      "{projectRoot}/.eslintrc.json"
+    ],
+    "dependabot": ["{workspaceRoot}/yarn.lock"],
+    "github_actions": ["{workspaceRoot}/.github/workflows/**", "{workspaceRoot}/.github/actions/**"]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": [
+        "noMarkdown",
+        "^noMarkdown",
+        "noSonar",
+        "^noSonar",
+        "noSpecs",
+        "^noSpecs",
+        "github_actions"
+      ],
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "test": {
+      "inputs": [
+        "noMarkdown",
+        "^noMarkdown",
+        "noSonar",
+        "^noSonar",
+        "dependabot",
+        "github_actions"
+      ],
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "esLintConfig",
+        "noMarkdown",
+        "^noMarkdown",
+        "noSonar",
+        "^noSonar",
+        "dependabot",
+        "github_actions"
+      ],
+      "cache": true
+    },
+    "e2e": {
+      "inputs": ["default", "^default", "dependabot", "github_actions"]
+    },
+    "lint:fix": {
+      "cache": true
+    },
+    "copy:silent-renewal-html": {
+      "cache": true
+    },
+    "build:silent-renewal-html": {
+      "cache": true
+    },
+    "analyze": {
+      "cache": true
+    },
+    "storybook:build": {
+      "cache": true
+    },
+    "graphql": {
+      "cache": true
+    },
+    "copyimages": {
+      "cache": true
+    },
+    "build:schema": {
+      "cache": true
+    },
+    "codegen-openapi": {
+      "cache": true
+    },
+    "codegen-graphql": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "inputs": [
+        "noMarkdown",
+        "^noMarkdown",
+        "noSonar",
+        "^noSonar",
+        "dependabot",
+        "github_actions"
+      ],
+      "dependsOn": ["^build"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": false
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true,
+          "reporters": ["jest-silent-reporter", "jest-junit", "jest-slow-test-reporter"]
+        }
+      }
+    }
+  },
+  "affected": {
+    "defaultBase": "dev"
+  },
+  "workspaceLayout": {
+    "libsDir": "libs",
+    "appsDir": "apps"
+  },
+  "generators": {
+    "@nx/eslint:lint": {
+      "linter": "eslint"
+    },
+    "@nx/eslint:eslint": {
+      "hasTypeAwareRules": true,
+      "cache": true,
+      "maxWarnings": 0,
+      "cacheStrategy": "content"
+    },
+    "@nx/js:swc": {
+      "skipTypeCheck": false,
+      "sourceMap": true
+    },
+    "@nx/js:library": {
+      "buildable": true,
+      "compiler": "swc",
+      "publishable": false,
+      "setParserOptionsProject": false,
+      "skipTypeCheck": false
+    },
+    "@nx/jest:jest": {
+      "detectLeaks": true,
+      "logHeapUsage": true,
+      "codeCoverage": true,
+      "ci": false
+    },
+    "@nx/react": {
+      "application": {
+        "style": "none",
+        "linter": "eslint",
+        "bundler": "webpack",
+        "compiler": "swc",
+        "routing": "true",
+        "babel": true
+      },
+      "component": {
+        "style": "none"
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint",
+        "compiler": "swc"
+      }
+    }
+  },
+  "parallel": 10
+}

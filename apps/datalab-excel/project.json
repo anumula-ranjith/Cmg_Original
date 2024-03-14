@@ -1,0 +1,152 @@
+{
+  "name": "datalab-excel",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/datalab-excel/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "swc",
+        "outputPath": "dist/apps/datalab-excel",
+        "index": "apps/datalab-excel/src/index.html",
+        "baseHref": "/",
+        "deployUrl": "/",
+        "main": "apps/datalab-excel/src/main.tsx",
+        "additionalEntryPoints": [
+          {
+            "entryName": "taskpane",
+            "entryPath": "apps/datalab-excel/src/taskpane/index.tsx"
+          },
+          {
+            "entryName": "commands",
+            "entryPath": "apps/datalab-excel/src/commands/commands.ts"
+          },
+          {
+            "entryName": "functions",
+            "entryPath": "apps/datalab-excel/src/functions/functions.ts"
+          }
+        ],
+        "polyfills": "apps/datalab-excel/src/polyfills.ts",
+        "tsConfig": "apps/datalab-excel/tsconfig.app.json",
+        "assets": ["apps/datalab-excel/src/favicon.ico", "apps/datalab-excel/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/datalab-excel/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "optimization": true,
+          "outputHashing": "none",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "datalab-excel:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "datalab-excel:build:development"
+        },
+        "production": {
+          "buildTarget": "datalab-excel:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/datalab-excel/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/datalab-excel/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {}
+      }
+    },
+    "ts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p tsconfig.json --noEmit --emitDeclarationOnly false",
+        "cwd": "apps/datalab-excel"
+      },
+      "configurations": {
+        "check": {}
+      }
+    },
+    "generate-custom-functions-metadata": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "custom-functions-metadata generate apps/datalab-excel/src/functions/functions.ts apps/datalab-excel/src/functions/functions.json"
+      }
+    },
+    "start-addin": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-debugging start manifest.local.xml",
+        "cwd": "apps/datalab-excel"
+      }
+    },
+    "start-addin-desktop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-debugging start manifest.local.xml desktop --debug-method=web",
+        "cwd": "apps/datalab-excel"
+      }
+    },
+    "stop-addin-desktop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-debugging stop manifest.local.xml desktop",
+        "cwd": "apps/datalab-excel"
+      }
+    },
+    "start-addin-web": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-debugging start manifest.local.xml web",
+        "cwd": "apps/datalab-excel"
+      }
+    },
+    "stop-addin-web": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-debugging stop manifest.local.xml web",
+        "cwd": "apps/datalab-excel"
+      }
+    },
+    "validate-addin": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "office-addin-manifest validate manifest.local.xml",
+        "cwd": "apps/datalab-excel"
+      }
+    }
+  },
+  "tags": []
+}

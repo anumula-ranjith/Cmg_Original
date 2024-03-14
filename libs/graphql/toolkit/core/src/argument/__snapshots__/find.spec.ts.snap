@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`findArgumentsByField find arguments for a Query type 1`] = `
+Array [
+  Object {
+    "astNode": undefined,
+    "defaultValue": undefined,
+    "deprecationReason": undefined,
+    "description": null,
+    "extensions": undefined,
+    "name": "skip",
+    "type": "Int",
+  },
+  Object {
+    "astNode": undefined,
+    "defaultValue": undefined,
+    "deprecationReason": undefined,
+    "description": null,
+    "extensions": undefined,
+    "name": "take",
+    "type": "Int",
+  },
+  Object {
+    "astNode": undefined,
+    "defaultValue": undefined,
+    "deprecationReason": undefined,
+    "description": null,
+    "extensions": undefined,
+    "name": "order",
+    "type": "[OfferingSortInput!]",
+  },
+  Object {
+    "astNode": undefined,
+    "defaultValue": undefined,
+    "deprecationReason": undefined,
+    "description": null,
+    "extensions": undefined,
+    "name": "where",
+    "type": "OfferingFilterInput",
+  },
+]
+`;
+
+exports[`findArgumentsByField finds arguments for a Mutation type 1`] = `
+Array [
+  Object {
+    "astNode": undefined,
+    "defaultValue": undefined,
+    "deprecationReason": undefined,
+    "description": null,
+    "extensions": undefined,
+    "name": "input",
+    "type": "AddCompanyInput!",
+  },
+]
+`;

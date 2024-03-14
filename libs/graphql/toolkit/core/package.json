@@ -1,0 +1,12 @@
+{
+  "name": "@cmg/graphql-toolkit-core",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "dependencies": {
+    "@cmg/core-types": "^0.1.0",
+    "@cmg/core-array": "^0.1.0"
+  },
+  "peerDependencies": {
+    "graphql": "^16.6.0"
+  }
+}

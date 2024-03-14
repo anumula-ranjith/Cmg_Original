@@ -1,0 +1,23 @@
+{
+  "routes": [
+    {
+      "route": "/taskpane/*",
+      "rewrite": "/taskpane.html"
+    },
+    {
+      "route": "/taskpane",
+      "rewrite": "/taskpane.html"
+    },
+    {
+      "route": "/commands*",
+      "rewrite": "/commands.html"
+    },
+    {
+      "route": "/functions*",
+      "rewrite": "/functions.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}

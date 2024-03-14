@@ -1,0 +1,17 @@
+node_modules
+dist
+build
+.cache
+apps/*/node_modules
+libs/*/node_modules
+apps/*/__generated__
+libs/*/__generated__
+packages/*/dist
+packages/*/build
+packages/*/node_modules
+packages/*/__generated__
+/tmp
+/coverage
+/dist
+__generated__
+jest.config.ts

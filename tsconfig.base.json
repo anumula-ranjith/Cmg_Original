@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@cmg/auth-client-oidc": ["libs/auth/client/oidc/src/index.ts"],
+      "@cmg/core-array": ["libs/core/array/src/index.ts"],
+      "@cmg/core-assert": ["libs/core/assert/src/index.ts"],
+      "@cmg/core-types": ["libs/core/types/src/index.ts"],
+      "@cmg/graphql-toolkit-client": ["libs/graphql/toolkit/client/src/index.ts"],
+      "@cmg/graphql-toolkit-codegen": ["libs/graphql/toolkit/codegen/src/index.ts"],
+      "@cmg/graphql-toolkit-core": ["libs/graphql/toolkit/core/src/index.ts"],
+      "@cmg/graphql-toolkit-introspection": ["libs/graphql/toolkit/introspection/src/index.ts"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "**/*/node_modules",
+    "**/*/libs",
+    "**/*/dist",
+    "**/*/build",
+    "dist",
+    "tmp",
+    "coverage"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "extends": "../../../workspace-configs/lib/tsconfig.es2020.json",
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

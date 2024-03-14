@@ -1,0 +1,63 @@
+{
+  "name": "core-types",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/core/types/src/",
+  "projectType": "library",
+  "tags": ["scope:core"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "swcrc": "workspace-configs/lib/.swcrc",
+        "outputPath": "dist/libs/core/types",
+        "main": "libs/core/types/src/index.ts",
+        "tsConfig": "libs/core/types/tsconfig.lib.json",
+        "assets": ["libs/core/types/*.md"],
+        "sourceMap": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "cache": true,
+        "lintFilePatterns": ["libs/core/types/**/*.ts"]
+      },
+      "configurations": {
+        "dev": {
+          "format": "visualstudio"
+        },
+        "ci": {
+          "maxWarnings": 0
+        },
+        "fix": {
+          "fix": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/core/types"],
+      "options": {
+        "jestConfig": "libs/core/types/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "reporters": ["jest-silent-reporter", "jest-slow-test-reporter"]
+        }
+      }
+    },
+    "ts": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p tsconfig.json --noEmit",
+        "cwd": "libs/core/types"
+      },
+      "configurations": {
+        "check": {}
+      }
+    }
+  }
+}

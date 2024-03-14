@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buildArgumentNode builds an argument 1`] = `"where: {accelerated: {eq: true}}"`;
+
+exports[`buildArgumentNode builds an wrapped argument 1`] = `"order: [{accelerated: ASC}, {company: {issuer: ASC}}]"`;
+
+exports[`buildArgumentNodesByField builds a Query type argument nodes from a field 1`] = `
+Array [
+  "order: {accelerated: ASC, company: {issuer: ASC}}",
+  "where: {accelerated: {eq: true}}",
+]
+`;

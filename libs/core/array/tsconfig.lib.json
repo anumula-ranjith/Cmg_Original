@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "jest.config.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "node_modules",
+    "**/*/node_modules",
+    "**/*/lib",
+    "**/*/dist",
+    "**/*/build",
+    "dist",
+    "tmp",
+    "coverage"
+  ]
+}

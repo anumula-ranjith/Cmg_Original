@@ -1,0 +1,8 @@
+{
+  "name": "@cmg/core-types",
+  "version": "0.1.0",
+  "description": "CMG Core Type Definitions",
+  "author": "Capital Markets Gateway, Inc.",
+  "license": "UNLICENSED",
+  "type": "commonjs"
+}
